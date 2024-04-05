@@ -178,6 +178,7 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+vim.keymap.set('n', '<C-n>', ':NvimTreeToggle<CR>', { desc = 'Toggle the NvimTree' })
 
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
@@ -542,6 +543,22 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
+        cssls = {},
+        cmake = {},
+        bashls = {},
+        clangd = {},
+        dockerls = {},
+        gradle_ls = {},
+        groovyls = {},
+        hls = {},
+        jsonls = {},
+        java_language_server = {},
+        markdown_oxide = {},
+        pyright = {},
+        sqlls = {},
+        somesass_ls = {},
+        yamlls = {},
+
         -- clangd = {},
         -- gopls = {},
         -- pyright = {},
