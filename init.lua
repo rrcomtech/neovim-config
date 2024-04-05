@@ -92,9 +92,6 @@ vim.g.maplocalleader = ' '
 vim.opt.colorcolumn = '80'
 vim.opt.tw = 79
 
--- NOTE: MY CUSTOM KEYBINDINGS
-
-
 -- Set to true if you have a Nerd Font installed
 vim.g.have_nerd_font = true
 
@@ -974,7 +971,6 @@ require('lazy').setup({
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
   { import = 'custom.plugins' },
 }, {
   ui = {
