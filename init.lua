@@ -90,6 +90,14 @@ P.S. You can delete this when you're done too. It's your config now! :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- NOTE: MY CUSTOM KEYBINDINGS
+vim.keymap.set(
+  'n',
+  '<leader>b',
+  '<cmd>:!rm -rf main.pdf && nix-build tex.nix && cp result/main.pdf .<CR>',
+  { desc = 'Build latex file by running nix-build tex.nix' }
+)
+
 -- Set to true if you have a Nerd Font installed
 vim.g.have_nerd_font = true
 
@@ -549,11 +557,8 @@ require('lazy').setup({
         clangd = {},
         dockerls = {},
         gradle_ls = {},
-        groovyls = {},
-        hls = {},
         jsonls = {},
         java_language_server = {},
-        markdown_oxide = {},
         pyright = {},
         sqlls = {},
         somesass_ls = {},
