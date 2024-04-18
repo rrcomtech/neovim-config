@@ -297,29 +297,12 @@ require('lazy').setup({
         ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
         ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
         ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
+        ['<leader>h'] = { name = 'Git [H]unk', _ = 'which_key_ignore' },
       }
-      
-      -- ################################
-      -- My custom keymap
-      -- ################################
-
-      vim.keymap.set(
-        'n',
-        '<leader>bp',
-        '<cmd>:!rm -rf main.pdf && nix-build proposal.nix && cp result/main.pdf .<CR>',
-        { desc = 'Build Proposal by running nix-build proposal.nix' }
-      )
-      
-      vim.keymap.set(
-        'n',
-        '<leader>bf',
-        '<cmd>:!rm -rf main.pdf && nix-build tex.nix && cp result/main.pdf .<CR>',
-        { desc = 'Build Thesis by running nix-build tex.nix' }
-      )
-
-      -- ################################
-      -- End custom keymaps
-      -- ################################
+      -- visual mode
+      require('which-key').register({
+        ['<leader>h'] = { 'Git [H]unk' },
+      }, { mode = 'v' })
     end,
   },
 
@@ -915,6 +898,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
   -- require 'kickstart.plugins.neo-tree',
+  -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
