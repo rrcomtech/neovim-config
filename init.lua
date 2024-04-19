@@ -89,8 +89,10 @@ P.S. You can delete this when you're done too. It's your config now! :)
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+
 vim.opt.colorcolumn = '80'
 vim.opt.tw = 79
+-- NOTE: MY CUSTOM KEYBINDINGS
 
 -- Set to true if you have a Nerd Font installed
 vim.g.have_nerd_font = true
@@ -277,7 +279,6 @@ require('lazy').setup({
   -- Then, because we use the `config` key, the configuration only runs
   -- after the plugin has been loaded:
   --  config = function() ... end
-
   { -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'

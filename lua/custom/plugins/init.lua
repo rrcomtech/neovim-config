@@ -113,5 +113,11 @@ return {
       vim.g.vimtex_view_method = "zathura"
     end
   },
-  { 'wakatime/vim-wakatime', lazy = false }
+  { 'wakatime/vim-wakatime', lazy = false },
+  {
+    'edluffy/hologram.nvim',
+    config = function()
+      require('hologram').setup({auto_display= true})
+    end
+  }
 }
