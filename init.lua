@@ -91,12 +91,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- NOTE: MY CUSTOM KEYBINDINGS
-vim.keymap.set(
-  'n',
-  '<leader>b',
-  '<cmd>:!rm -rf main.pdf && nix-build tex.nix && cp result/main.pdf .<CR>',
-  { desc = 'Build latex file by running nix-build tex.nix' }
-)
+
 
 -- Set to true if you have a Nerd Font installed
 vim.g.have_nerd_font = true
@@ -300,6 +295,28 @@ require('lazy').setup({
         ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
         ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
       }
+      
+      -- ################################
+      -- My custom keymap
+      -- ################################
+
+      vim.keymap.set(
+        'n',
+        '<leader>bp',
+        '<cmd>:!rm -rf main.pdf && nix-build proposal.nix && cp result/main.pdf .<CR>',
+        { desc = 'Build Proposal by running nix-build proposal.nix' }
+      )
+      
+      vim.keymap.set(
+        'n',
+        '<leader>bf',
+        '<cmd>:!rm -rf main.pdf && nix-build tex.nix && cp result/main.pdf .<CR>',
+        { desc = 'Build Thesis by running nix-build tex.nix' }
+      )
+
+      -- ################################
+      -- End custom keymaps
+      -- ################################
     end,
   },
 
@@ -728,7 +745,7 @@ require('lazy').setup({
           -- Accept ([y]es) the completion.
           --  This will auto-import if your LSP supports it.
           --  This will expand snippets if the LSP sent a snippet.
-          ['<C-y>'] = cmp.mapping.confirm { select = true },
+          ['<C-m>'] = cmp.mapping.confirm { select = true },
 
           -- Manually trigger a completion from nvim-cmp.
           --  Generally you don't need this, because nvim-cmp will display

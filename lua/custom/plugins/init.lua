@@ -12,11 +12,11 @@ return {
       require('nvim-tree').setup()
     end,
   },
-  {
-    'pmizio/typescript-tools.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
-    opts = {},
-  },
+ -- {
+   -- 'pmizio/typescript-tools.nvim',
+   -- dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+   -- opts = {},
+  --},
   {
     'L3MON4D3/LuaSnip',
     -- follow latest release.
@@ -24,4 +24,22 @@ return {
     -- install jsregexp (optional!).
     build = 'make install_jsregexp',
   },
+  {
+    'pwntester/octo.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+      -- OR 'ibhagwan/fzf-lua',
+      'nvim-tree/nvim-web-devicons',
+    },
+    config = function()
+      require('octo').setup()
+    end,
+  },
+  {
+    'edluffy/hologram.nvim',
+    config = function()
+      require('hologram').setup({auto_display= true})
+    end
+  }
 }
