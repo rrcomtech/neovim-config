@@ -4,6 +4,23 @@
 -- See the kickstart.nvim README for more information
 return {
   {
+    'kristijanhusak/vim-dadbod-ui',
+    dependencies = {
+      { 'tpope/vim-dadbod', lazy = true },
+      { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'duckdb' }, lazy = true },
+    },
+    cmd = {
+      'DBUI',
+      'DBUIToggle',
+      'DBUIAddConnection',
+      'DBUIFindBuffer',
+    },
+    init = function()
+      -- Your DBUI configuration
+      vim.g.db_ui_use_nerd_fonts = 1
+    end,
+    },
+  {
     'nvim-tree/nvim-tree.lua',
     dependencies = {
       'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
@@ -41,5 +58,21 @@ return {
     config = function()
       require('hologram').setup({auto_display= true})
     end
+  },
+  {
+    "savq/melange-nvim",
+    config = function ()
+      vim.opt.termguicolors = true
+      vim.cmd.colorscheme 'melange'
+    end
+  },
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
+  },
+  {
+    'github/copilot.vim'
   }
 }
