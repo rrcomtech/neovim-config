@@ -54,16 +54,26 @@ return {
     end,
   },
   {
-    'edluffy/hologram.nvim',
-    config = function()
-      require('hologram').setup({auto_display= true})
-    end
-  },
-  {
     "savq/melange-nvim",
     config = function ()
       vim.opt.termguicolors = true
       vim.cmd.colorscheme 'melange'
+    end
+  },
+  {
+    "xiyaowong/transparent.nvim",
+    config = function()
+      require("transparent").setup({
+        enable = true,
+        extra_groups = {
+          "NvimTree",
+          "terminal",
+          "packer",
+          "TelescopePrompt",
+          "TelescopeResults",
+          "TelescopePreview",
+        },
+      })
     end
   },
   {

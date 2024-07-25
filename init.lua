@@ -89,6 +89,7 @@ P.S. You can delete this when you're done too. It's your config now! :)
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+vim.opt.colorcolumn = '90'
 
 -- NOTE: MY CUSTOM KEYBINDINGS
 
@@ -541,11 +542,11 @@ require('lazy').setup({
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
               buffer = event.buf,
               callback = vim.lsp.buf.document_highlight,
-            })
+              })
 
-            vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-              buffer = event.buf,
-              callback = vim.lsp.buf.clear_references,
+              vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+                buffer = event.buf,
+                callback = vim.lsp.buf.clear_references,
             })
           end
         end,
@@ -571,7 +572,6 @@ require('lazy').setup({
         cssls = {},
         cmake = {},
         bashls = {},
-        clangd = {},
         dockerls = {},
         gradle_ls = {},
         jsonls = {},
@@ -580,8 +580,11 @@ require('lazy').setup({
         sqlls = {},
         somesass_ls = {},
         yamlls = {},
-
-        -- clangd = {},
+        clangd = {
+          settings = {
+            offset_encoding = { 'utf-8' },
+          }
+        },
         -- gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
@@ -920,6 +923,40 @@ require('lazy').setup({
     },
   },
 })
+
+-- Minimal config to reproduce the warning
+local lspconfig = require("lspconfig.configs")
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+	properties = { "documentation", "detail", "additionalTextEdits" },
+}
+
+local cmp_capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+
+local clangd_capabilities = cmp_capabilities
+clangd_capabilities.textDocument.semanticHighlighting = true
+clangd_capabilities.offsetEncoding = "utf-8"
+
+lspconfig.clangd.setup{
+    capabilities = clangd_capabilities,
+    cmd = {
+    	"clangd",
+    	"--background-index",
+    	"--pch-storage=memory",
+    	"--clang-tidy",
+    	"--suggest-missing-includes",
+    	"--cross-file-rename",
+    	"--completion-style=detailed",
+    },
+    init_options = {
+    	clangdFileStatus = true,
+    	usePlaceholders = true,
+    	completeUnimported = true,
+    	semanticHighlighting = true,
+    }
+}
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
