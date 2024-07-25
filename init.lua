@@ -89,6 +89,7 @@ P.S. You can delete this when you're done too. It's your config now! :)
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+vim.opt.colorcolumn = '90'
 
 vim.opt.colorcolumn = '80'
 vim.opt.tw = 79
@@ -332,7 +333,6 @@ require('lazy').setup({
       },
     },
   },
-
   -- NOTE: Plugins can specify dependencies.
   --
   -- The dependencies are proper plugin specifications as well - anything
@@ -570,11 +570,10 @@ require('lazy').setup({
               buffer = event.buf,
               group = highlight_augroup,
               callback = vim.lsp.buf.document_highlight,
-              })
+            })
             vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-              buffer = event.buf,
-              group = highlight_augroup,
-              callback = vim.lsp.buf.clear_references,
+                buffer = event.buf,
+                callback = vim.lsp.buf.clear_references,
             })
 
             vim.api.nvim_create_autocmd('LspDetach', {
