@@ -89,7 +89,8 @@ P.S. You can delete this when you're done too. It's your config now! :)
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-vim.opt.colorcolumn = '90'
+vim.opt.colorcolumn = '80'
+vim.opt.tw = 79
 
 -- NOTE: MY CUSTOM KEYBINDINGS
 

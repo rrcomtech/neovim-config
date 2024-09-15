@@ -93,5 +93,33 @@ return {
         date_format = "%r",
         virtual_text_column = 10
     }
-  }
+  },
+  {
+    'folke/todo-comments.nvim',
+    config = function ()
+      require('todo-comments').setup ({
+        opts = {
+          signs = true
+        }
+      })
+    end
+  },
+  {
+    'MeanderingProgrammer/render-markdown.nvim',
+    opts = {},
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+    config = function ()
+      require('render-markdown').enable()
+    end
+  },
+  {
+    "lervag/vimtex",
+    lazy = false,     -- we don't want to lazy load VimTeX
+    -- tag = "v2.15", -- uncomment to pin to a specific release
+    init = function()
+      -- VimTeX configuration goes here, e.g.
+      vim.g.vimtex_view_method = "zathura"
+    end
+  },
+  { 'wakatime/vim-wakatime', lazy = false }
 }
