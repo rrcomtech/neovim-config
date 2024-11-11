@@ -586,6 +586,7 @@ require('lazy').setup({
             offset_encoding = { 'utf-8' },
           }
         },
+        prismals = {},
         -- gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
