@@ -451,6 +451,13 @@ require('lazy').setup({
       { 'folke/neodev.nvim', opts = {} },
     },
     config = function()
+      local nvim_lsp = require('lspconfig');
+      nvim_lsp.denols.setup {
+        on_attach = on_attach,
+        root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
+      }
+
+
       -- Brief aside: **What is LSP?**
       --
       -- LSP is an initialism you've probably heard, but might not understand what it is.
