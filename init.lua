@@ -583,7 +583,6 @@ require('lazy').setup({
         dockerls = {},
         gradle_ls = {},
         jsonls = {},
-        java_language_server = {},
         pyright = {},
         sqlls = {},
         somesass_ls = {},

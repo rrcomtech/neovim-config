@@ -105,14 +105,6 @@ return {
     end
   },
   {
-    'MeanderingProgrammer/render-markdown.nvim',
-    opts = {},
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
-    config = function ()
-      require('render-markdown').enable()
-    end
-  },
-  {
     "lervag/vimtex",
     lazy = false,     -- we don't want to lazy load VimTeX
     -- tag = "v2.15", -- uncomment to pin to a specific release
