@@ -477,8 +477,6 @@ require('lazy').setup({
     },
     config = function()
       local nvim_lsp = require('lspconfig');
-
-
       -- Brief aside: **What is LSP?**
       --
       -- LSP is an initialism you've probably heard, but might not understand what it is.
