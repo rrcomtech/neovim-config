@@ -452,10 +452,6 @@ require('lazy').setup({
     },
     config = function()
       local nvim_lsp = require('lspconfig');
-      nvim_lsp.denols.setup {
-        on_attach = on_attach,
-        root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
-      }
 
 
       -- Brief aside: **What is LSP?**
@@ -592,6 +588,7 @@ require('lazy').setup({
             offset_encoding = { 'utf-8' },
           }
         },
+        denols = {},
         prismals = {},
         -- gopls = {},
         -- pyright = {},
